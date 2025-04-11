@@ -2,7 +2,7 @@
 
 A modern, responsive food recipe application built with Next.js, TypeScript, and Tailwind CSS that helps users discover delicious recipes from around the world.
 
-![SavoryExplorer Screenshot](screenshot.png)
+![SavoryExplorer Screenshot](/public/screenshot.png)
 
 ## 🌟 Features
 
