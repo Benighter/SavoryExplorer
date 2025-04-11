@@ -2,11 +2,14 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
-import { FiMenu, FiX, FiSearch } from 'react-icons/fi';
+import { FiMenu, FiX, FiSearch, FiLoader } from 'react-icons/fi';
+import { useRouter } from 'next/navigation';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+  const router = useRouter();
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -15,7 +18,11 @@ const Navbar = () => {
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
     if (searchQuery.trim()) {
-      window.location.href = `/search?q=${encodeURIComponent(searchQuery)}`;
+      setIsLoading(true);
+      router.push(`/search?q=${encodeURIComponent(searchQuery)}`);
+      // Note: The loading state will be cleared when the page navigation completes
+      // and the component unmounts. If we wanted to persist it across pages,
+      // we would need to use context or a state management library.
     }
   };
 
@@ -55,11 +62,27 @@ const Navbar = () => {
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 className="pl-10 pr-4 py-2 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-primary-300"
+                disabled={isLoading}
               />
-              <FiSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
+              {isLoading ? (
+                <FiLoader className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 animate-spin" />
+              ) : (
+                <FiSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
+              )}
             </div>
-            <button type="submit" className="btn btn-primary ml-2 rounded-full">
-              Search
+            <button 
+              type="submit" 
+              className="btn btn-primary ml-2 rounded-full flex items-center" 
+              disabled={isLoading}
+            >
+              {isLoading ? (
+                <>
+                  <FiLoader className="animate-spin mr-1" />
+                  <span>Searching...</span>
+                </>
+              ) : (
+                "Search"
+              )}
             </button>
           </form>
 
@@ -98,11 +121,24 @@ const Navbar = () => {
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
                     className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-primary-300"
+                    disabled={isLoading}
                   />
-                  <FiSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
+                  {isLoading ? (
+                    <FiLoader className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 animate-spin" />
+                  ) : (
+                    <FiSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
+                  )}
                 </div>
-                <button type="submit" className="btn btn-primary ml-2 rounded-full">
-                  Search
+                <button 
+                  type="submit" 
+                  className="btn btn-primary ml-2 rounded-full flex items-center" 
+                  disabled={isLoading}
+                >
+                  {isLoading ? (
+                    <FiLoader className="animate-spin" />
+                  ) : (
+                    "Search"
+                  )}
                 </button>
               </form>
             </div>
