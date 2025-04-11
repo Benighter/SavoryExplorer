@@ -4,6 +4,10 @@ A modern, responsive food recipe application built with Next.js, TypeScript, and
 
 ![SavoryExplorer Screenshot](/public/screenshot.png)
 
+## 🌐 Live Demo
+
+Check out the live application: [SavoryExplorer](https://savory-explorer.vercel.app/)
+
 ## 🌟 Features
 
 - **Recipe Search**: Find recipes by name, ingredient, or category
