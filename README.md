@@ -27,7 +27,7 @@ A modern, responsive food recipe application built with Next.js, TypeScript, and
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/your-username/savory-explorer.git
+   git clone https://github.com/Benighter/SavoryExplorer.git
    cd savory-explorer
    ```
 
