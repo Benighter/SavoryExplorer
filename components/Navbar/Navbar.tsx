@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import { FiMenu, FiX, FiSearch, FiLoader } from 'react-icons/fi';
 import { useRouter } from 'next/navigation';
+import DonateButton from '../Donation/DonateButton';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -51,6 +52,7 @@ const Navbar = () => {
             <Link href="/random" className="font-medium hover:text-primary-600 transition-colors">
               Random Recipe
             </Link>
+            <DonateButton variant="navbar" />
           </div>
 
           {/* Search Bar */}
@@ -111,6 +113,7 @@ const Navbar = () => {
               <Link href="/random" className="font-medium hover:text-primary-600 transition-colors" onClick={toggleMenu}>
                 Random Recipe
               </Link>
+              <DonateButton variant="navbar" />
               
               {/* Mobile Search */}
               <form onSubmit={handleSearch} className="flex items-center mt-2">

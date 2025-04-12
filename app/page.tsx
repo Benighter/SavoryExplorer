@@ -1,10 +1,11 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { FiSearch } from 'react-icons/fi';
+import { FiSearch, FiHeart } from 'react-icons/fi';
 import Layout from '../components/Layout';
 import SectionTitle from '../components/SectionTitle';
 import { getRandomMeal } from '../lib/utils/api';
+import DonateButton from '../components/Donation/DonateButton';
 
 export default async function Home() {
   // Fetch featured/random recipe
@@ -39,6 +40,31 @@ export default async function Home() {
                 Search
               </button>
             </form>
+          </div>
+        </div>
+      </section>
+      
+      {/* Donation Banner */}
+      <section className="bg-gradient-to-r from-accent-500 to-accent-600 py-8 relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-40 h-40 md:w-60 md:h-60 opacity-10">
+          <FiHeart className="w-full h-full" />
+        </div>
+        
+        <div className="container-custom relative z-10">
+          <div className="flex flex-col md:flex-row items-center justify-between">
+            <div className="mb-6 md:mb-0 text-center md:text-left">
+              <h2 className="text-2xl md:text-3xl font-heading font-bold text-white mb-2">
+                Support SavoryExplorer
+              </h2>
+              <p className="text-white text-opacity-90 max-w-xl">
+                Help us continue creating delicious recipe content and improving our platform.
+                Your contribution makes a difference!
+              </p>
+            </div>
+            
+            <DonateButton 
+              className="px-8 py-3 text-lg shadow-lg hover:shadow-xl transform transition-transform hover:-translate-y-1"
+            />
           </div>
         </div>
       </section>

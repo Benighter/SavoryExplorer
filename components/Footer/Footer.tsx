@@ -3,6 +3,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { FiGithub, FiLinkedin, FiGlobe } from 'react-icons/fi';
+import DonateButton from '../Donation/DonateButton';
 
 const Footer = () => {
   return (
@@ -18,6 +19,9 @@ const Footer = () => {
               Discover delicious recipes from around the world with our comprehensive 
               collection of meals, ingredients, and cooking guides.
             </p>
+            <div className="pt-2">
+              <DonateButton variant="footer" />
+            </div>
           </div>
 
           {/* Quick Links */}
